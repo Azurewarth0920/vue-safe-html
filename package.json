@@ -1,0 +1,40 @@
+{
+  "name": "vue-safe-html",
+  "version": "0.0.1",
+  "description": "a Vue directive that allows you to use the decided HTML tags",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "parcel demo/index.html",
+    "clean": "rm -rf dist",
+    "build:es": "rollup --config build/rollup.config.es.js",
+    "build:umd": "rollup --config build/rollup.config.umd.js",
+    "prebuild": "run-s clean buld",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azurewarth0920/vue-safe-html.git"
+  },
+  "author": "pei.fan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Azurewarth0920/vue-safe-html/issues"
+  },
+  "homepage": "https://github.com/Azurewarth0920/vue-safe-html#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-typescript": "^4.1.2",
+    "@vue/component-compiler-utils": "^3.1.2",
+    "npm-run-all": "^4.1.5",
+    "parcel": "^1.12.4",
+    "rollup": "^2.13.1",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.5",
+    "vue": "^2.6.11",
+    "vue-hot-reload-api": "^2.3.4",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.10.2"
+  }
+}
