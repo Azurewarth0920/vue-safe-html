@@ -1,17 +1,15 @@
-import vue from 'Vue'
-import safeHtml from './directive'
-import { directive } from './parser'
+import { VueConstructor } from 'Vue'
+import { setDefaults, Config } from './parser'
+import { directive } from './directive'
+import { PluginObject } from 'Vue/types/umd'
 
-const install = (Vue: vue, options) => {
+const install = (Vue: VueConstructor, options: Config) => {
   if (options) setDefaults(options)
   Vue.directive('safe-html', directive)
 }
 
-if (typeof window !== 'undefined' && window.Vue) {
-  window.safeHtml = safeHtml
-  window.safeHtml.setDefaults = setDefaults
-  window.Vue.use(install)
+const VueSafeHtml: PluginObject<any> = {
+  install
 }
 
-safeHtml.install = install
-export default safeHtml
+export default VueSafeHtml

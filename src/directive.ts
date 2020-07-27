@@ -1,12 +1,22 @@
 import { DirectiveOptions } from 'vue'
 import { parser } from './parser'
+import { DirectiveBinding } from 'Vue/types/options'
 
-const parseExpression = (expression) => {
-  return expression
+function bindingParser(binding:DirectiveBinding) {
+  return typeof binding.expression === 'string'
+    ? parser(binding.expression)
+    : parser(binding.expression.content, binding.expression.options)
 }
 
 export const directive: DirectiveOptions = {
-  inserted(el, binding, vnode) {
-    el.innerHTML = parser(binding.expression, binding.)
+  inserted(el, binding) {
+    el.innerHTML = bindingParser(binding)
+  },
+  update(el, binding) {
+    el.innerHTML = bindingParser(binding)
+  },
+  unbind(el) {
+    // clear innerHTML when unbind
+    el.innerHTML = ''
   }
 }
